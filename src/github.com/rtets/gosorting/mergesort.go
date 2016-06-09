@@ -20,8 +20,8 @@ func merge(left []int,right []int) (merged []int){
     llen,rlen := len(left), len(right)
     mlen := llen+rlen
     merged = make([]int, mlen)
-    i,l,r := 0,0,0
-    for {
+    l,r := 0,0
+    for i := 0; i<mlen; i++ {
         if (l==llen) {
             copy(merged[i:mlen], right[r:rlen])
             return
@@ -35,7 +35,6 @@ func merge(left []int,right []int) (merged []int){
             merged[i] = right[r]
             r++
         }
-        i++
     }
     return
 }
@@ -64,6 +63,7 @@ func main() {
         v,err := strconv.Atoi(scanner.Text())
         if (err==nil) {
             unsorted[index] = v
+            index++
         }
     }
     unsorted = mergesort(unsorted)
